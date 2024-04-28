@@ -1,19 +1,22 @@
 #! /usr/bin/env node
 
-import inquirer from "inquirer";
+import inquirer from "inquirer";  //Import inquirer
+
+import chalk from "chalk";//chalk
+console.log(chalk.bold.italic.magentaBright("\n \tWelcome to the CLI Simple Calculator\n"));
 
 const answer = await inquirer.prompt([
-  { message: "Enter first number", type: "number", name: "firstNumber" },
-  { message: "Enter second number", type: "number", name: "secondNumber" },
+  { message: chalk.blueBright("Enter first number"), type: "number", name: "firstNumber" },
+  { message: chalk.blueBright("Enter second number"), type: "number", name: "secondNumber" },
   {
-    message: "Select one of the operator to perform operation",
+    message: chalk.blue("Select one of the operator to perform operation"),//operations
     type: "list",
     name: "operator",
-    choices: ["Addition", "Subtraction", "Multiplication", "Division", "Modulus", "Exponention",],
+    choices: ["Addition", "Subtraction", "Multiplication", "Division", "Modulus"],
   },
 ]);
 
-//Conditional statement
+//Conditional statements if and else
 
 if (answer.operator === "Addition") {
   console.log(answer.firstNumber + answer.secondNumber);
@@ -25,8 +28,7 @@ if (answer.operator === "Addition") {
   console.log(answer.firstNumber / answer.secondNumber);
 } else if (answer.operator === "Modulus") {
   console.log(answer.firstNumber % answer.secondNumber);
-} else if (answer.operator === "Exponention") {
-  console.log(answer.firstNumber ** answer.secondNumber);
-} else {
-    console.log("please select valid operator");
+}
+else {
+  console.log(chalk.bold.redBright("please select valid operator"));
 }
